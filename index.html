@@ -3,142 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cài Đặt Gọi Rồng Online</title>
+<title>Cài Đặt App Gọi Rồng Online</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; min-height: 100vh; }
-.container { max-width: 980px; margin: 0 auto; padding: 20px; background: white; }
-.app-header { background: white; padding: 20px 0; border-bottom: 1px solid #e5e5e7; text-align: center; }
-.app-header-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-.app-icon { width: 120px; height: 120px; border-radius: 26px; background: #f5f5f7; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.app-icon img { width: 100%; height: 100%; object-fit: cover; }
-.app-title { font-size: 34px; font-weight: 700; color: #1d1d1f; }
-.install-btn-big { 
-  display: block; 
-  padding: 15px 40px; 
-  background: #007AFF; 
-  color: white; 
-  text-decoration: none; 
-  border-radius: 30px; 
-  font-size: 20px; 
-  font-weight: 600; 
-  margin: 20px auto; 
-  min-width: 250px; 
-  text-align: center; 
-  box-shadow: 0 4px 10px rgba(0,122,255,0.3);
-}
-.install-btn-big:hover { background: #0051D5; }
-.app-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #f5f5f7; border-radius: 12px; overflow: hidden; margin: 20px 0; }
-.stat-item { position: relative; text-align: center; padding: 15px 8px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; min-height: 100vh; padding: 0; }
+.container { max-width: 980px; margin: 0 auto; padding: 0 20px; background: white; }
+/* Header giống App Store */
+.app-header { background: white; padding: 20px 0; border-bottom: 1px solid #e5e5e7; }
+.app-header-content { display: flex; align-items: flex-start; gap: 20px; padding: 0 20px; }
+.app-icon { width: 120px; height: 120px; border-radius: 26px; background: #f5f5f7; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.app-icon img { width: 100%; height: 100%; object-fit: contain; }
+.app-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.app-title { font-size: 34px; font-weight: 700; color: #1d1d1f; line-height: 1.2; }
+.app-subtitle { font-size: 21px; color: #86868b; font-weight: 400; }
+.install-section { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+.install-btn { display: inline-block; padding: 10px 20px; background: #007AFF; color: white; text-decoration: none; border-radius: 20px; font-size: 17px; font-weight: 600; transition: all 0.2s; min-width: 100px; text-align: center; }
+.install-btn:hover { background: #0051D5; }
+.in-app-purchase { font-size: 13px; color: #86868b; }
+.share-btn { margin-left: auto; width: 44px; height: 44px; border-radius: 50%; background: transparent; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #007AFF; font-size: 20px; }
+.share-btn:hover { background: #f5f5f7; }
+.app-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #f5f5f7; border-radius: 12px; overflow: hidden; }
+.stat-item { position: relative; text-align: center; padding: 12px 8px; }
+/* Gạch vuông dọc phân cách */
 .stat-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 50%; width: 2px; height: 40%; background: #d1d1d6; transform: translateY(-50%); border-radius: 2px; }
+/* Label & Value style */
 .stat-label { font-size: 13px; color: #86868b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 .stat-value { font-size: 21px; color: #1d1d1f; font-weight: 600; }
-.screenshots-section { margin: 30px 0; text-align: center; }
-.screenshots-title { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
-.screenshots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-.screenshots-grid img { width: 100%; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.instructions-section { padding: 20px; background: #f0f0f0; border-radius: 12px; margin: 20px 0; }
-.instructions-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
+.stat-subvalue { font-size: 13px; color: #86868b; margin-top: 2px; }
+.rating-stars { display: flex; gap: 2px; align-items: center; margin-top: 4px; }
+.star { color: #ff9500; font-size: 14px; }
+/* Screenshots */
+.screenshots-section { padding: 0 20px; border-bottom: 1px solid #e5e5e7; }
+.screenshot-main { position: relative; margin-bottom: 15px; }
+.screenshot-frame { border-radius: 20px; overflow: hidden; background: #000; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.screenshot-frame img { width: 100%; height: auto; display: block; }
+.screenshot-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10; }
+.screenshot-nav:hover { background: rgba(0,0,0,0.7); }
+.screenshot-nav.prev { left: 10px; }
+.screenshot-nav.next { right: 10px; }
+.screenshot-nav.hidden { display: none; }
+/* Mô tả */
+.description-section { padding: 0 20px; border-bottom: 1px solid #e5e5e7; }
+.description-text { font-size: 17px; line-height: 1.5; color: #1d1d1f; white-space: pre-wrap; }
+.read-more { color: #007AFF; cursor: pointer; text-decoration: none; }
+.read-more:hover { text-decoration: underline; }
+/* Nhà phát triển */
+.developer-section { padding: 20px; border-bottom: 1px solid #e5e5e7; }
+.developer-link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #007AFF; font-size: 17px; font-weight: 600; }
+.developer-link:hover { text-decoration: underline; }
+.developer-label { color: #86868b; font-size: 13px; margin-top: 4px; }
+/* Hướng dẫn cài đặt */
+.instructions-section { padding: 10px; background: #c3c3c5; border-radius: 5px; margin-bottom: 10px; }
+.instructions-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: #1d1d1f; }
 .instructions-list { list-style: none; counter-reset: step-counter; }
-.instructions-list li { counter-increment: step-counter; margin-bottom: 12px; padding-left: 40px; position: relative; font-size: 16px; }
-.instructions-list li::before { content: counter(step-counter); position: absolute; left: 0; width: 28px; height: 28px; background: #007AFF; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
-.description-section { padding: 20px; }
-.description-title { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
-.description-text { font-size: 17px; line-height: 1.6; color: #1d1d1f; }
-.developer-section { padding: 20px; border-top: 1px solid #e5e5e7; text-align: center; color: #86868b; }
-footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; margin-top: 30px; font-size: 14px; }
-@media (max-width: 768px) { 
-  .app-title { font-size: 28px; } 
-  .app-stats { grid-template-columns: repeat(2, 1fr); } 
-  .install-btn-big { font-size: 18px; min-width: 200px; }
+.instructions-list li { counter-increment: step-counter; margin-bottom: 15px; padding-left: 40px; position: relative; font-size: 16px; line-height: 1.6; color: #1d1d1f; }
+.instructions-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; width: 28px; height: 28px; background: #007AFF; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
+.loading { text-align: center; padding: 40px; color: #86868b; font-size: 16px; }
+@media (max-width: 768px) {
+.app-stats { grid-template-columns: repeat(4, 1fr); }
+.app-title { font-size: 28px; }
+.app-subtitle { font-size: 18px; }
 }
+footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; }
 </style>
 </head>
 <body>
 <div class="container">
+  <!-- Header giống App Store -->
   <div class="app-header">
     <div class="app-header-content">
-      <div class="app-icon">
-        <img src="https://st.download.com.vn/data/image/2021/03/17/Goi-Rong-Online-640.jpg" alt="Icon Gọi Rồng Online">
+      <div class="app-icon" id="appIcon">📱</div>
+      <div class="app-info">
+        <div class="app-title" id="appName">Đang tải...</div>
+        <div class="install-section">
+          <a href="#" id="installBtn" class="install-btn" style="display: none;"> Cài Đặt </a>
+          <span class="in-app-purchase" id="inAppPurchase" style="display: none;">Mua Trong Ứng Dụng</span>
+          <button class="share-btn" onclick="shareApp()" title="Chia sẻ">↗</button>
+        </div>
       </div>
-      <div class="app-title">Gọi Rồng Online</div>
-      <a href="itms-services://?action=download-manifest&url=https://rongchien2025.github.io/ios-install/manifest.plist" class="install-btn-big">
-        Cài Đặt Ngay
-      </a>
     </div>
   </div>
-
-  <!-- Luôn hiển thị đầy đủ 4 mục thông tin -->
-  <div class="app-stats">
-    <div class="stat-item">
+  <!-- Thông tin app - 4 cột -->
+  <div class="app-stats" id="appStats" style="display: none;">
+    <div class="stat-item" id="buildStat" style="display: none;">
       <div class="stat-label">Build</div>
-      <div class="stat-value">2025</div>
+      <div class="stat-value" id="buildValue"></div>
     </div>
-    <div class="stat-item">
+    <div class="stat-item" id="ageStat" style="display: none;">
       <div class="stat-label">Độ Tuổi</div>
-      <div class="stat-value">12+</div>
+      <div class="stat-value" id="ageValue"></div>
     </div>
-    <div class="stat-item">
+    <div class="stat-item" id="sizeStat" style="display: none;">
       <div class="stat-label">Kích Thước</div>
-      <div class="stat-value">≈ 400 MB</div>
+      <div class="stat-value" id="sizeValue"></div>
     </div>
-    <div class="stat-item">
+    <div class="stat-item" id="categoryStat" style="display: none;">
       <div class="stat-label">Thể Loại</div>
-      <div class="stat-value">MMORPG, Nhập Vai</div>
+      <div class="stat-value" id="categoryValue"></div>
     </div>
   </div>
-
-  <!-- Ảnh chụp màn hình -->
-  <div class="screenshots-section">
-    <div class="screenshots-title">Ảnh Chụp Màn Hình</div>
-    <div class="screenshots-grid">
-      <img src="https://cdn.tgdd.vn/GameApp/3/236077/Screentshots/goi-rong-online-game-nhap-vai-mmorpg-17-03-2021-2.jpg" alt="Screenshot 1">
-      <img src="https://cdn.tgdd.vn/GameApp/3/236077/Screentshots/goi-rong-online-game-nhap-vai-mmorpg-17-03-2021-1.jpg" alt="Screenshot 2">
-      <img src="https://cdn.tgdd.vn/GameApp/3/221194/Screentshots/chu-be-rong-online-01-06-2021-1.png" alt="Screenshot 3">
-      <img src="https://cdn.tgdd.vn/GameApp/3/221194/Screentshots/chu-be-rong-online-01-06-2021-5.png" alt="Screenshot 4">
-      <img src="https://cdn.tgdd.vn/GameApp/3/309029/Screentshots/tai-rong-than-sieu-cap-game-dau-tuong-dragon-ball-sieu-07-06-2023-3.jpg" alt="Screenshot 5">
-    </div>
-  </div>
-
-  <!-- Mô tả game -->
-  <div class="description-section">
-    <div class="description-title">Mô Tả</div>
-    <div class="description-text">
-      Gọi Rồng Online là tựa game nhập vai MMORPG màn hình ngang dựa trên nguyên tác bộ truyện tranh nổi tiếng 7 Viên Ngọc Rồng (Dragon Ball).<br><br>
-      Bạn sẽ hóa thân thành các chiến binh Saiyan, Người Trái Đất hoặc Namek, rèn luyện sức mạnh, thu thập Ngọc Rồng, triệu hồi Rồng Thần và tham gia các trận chiến đỉnh cao.<br><br>
-      Game sở hữu đồ họa ngộ nghĩnh chuẩn nguyên tác, chiêu thức kỹ năng đúng tên gọi, hiệu ứng âm thanh sống động, mang lại cảm giác "long trời lở đất" trong từng đòn đánh.
-    </div>
-  </div>
-
   <!-- Hướng dẫn cài đặt -->
   <div class="instructions-section">
     <div class="instructions-title">Hướng Dẫn Cài Đặt</div>
     <ol class="instructions-list">
-      <li>Đảm bảo bạn đang dùng iPhone hoặc iPad (iOS)</li>
-      <li>Nhấn nút <strong>"Cài Đặt Ngay"</strong> ở trên</li>
-      <li>Chọn "Cài đặt" khi có popup hiện lên</li>
-      <li>Vào <strong>Cài đặt → Cài đặt Chung → Quản lý VPN & Thiết bị</strong></li>
-      <li>Chọn chứng chỉ nhà phát triển (thường có tên doanh nghiệp)</li>
-      <li>Nhấn <strong>"Tin cậy"</strong></li>
-      <li>Quay về màn hình chính và mở game để chơi</li>
+      <li>Đảm bảo bạn đang sử dụng thiết bị iOS (iPhone/iPad)</li>
+      <li>Nhấn nút "Cài Đặt" ở trên</li>
+      <li>Cho phép cài đặt khi được hỏi</li>
+      <li>Vào <strong>Cài Đặt → Cài Đặt Chung → Quản Lý VPN & Thiết Bị</strong></li>
+      <li>Chọn chứng chỉ nhà phát triển</li>
+      <li>Nhấn <strong>"Tin Cậy"</strong></li>
+      <li>Quay về màn hình chính và mở ứng dụng</li>
     </ol>
   </div>
-
-  <div class="developer-section">
-    Nhà Phát Triển: Gọi Rồng VIP
+  <!-- Screenshots -->
+  <div class="screenshots-section" id="screenshotsSection" style="display: none;">
+    <div class="screenshot-main">
+      <button class="screenshot-nav prev" id="prevScreenshot" onclick="changeScreenshot(-1)">‹</button>
+      <div class="screenshot-frame">
+        <img id="mainScreenshot" src="" alt="Ảnh Chụp Màn Hình">
+      </div>
+      <button class="screenshot-nav next" id="nextScreenshot" onclick="changeScreenshot(1)">›</button>
+    </div>
   </div>
-
+  <!-- Mô tả -->
+  <div class="description-section" id="descriptionSection" style="display: none;">
+    <div style="font-size: 22px; font-weight: 600; margin-bottom: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <span>Mô Tả</span>
+    </div>
+    <div class="description-text" id="descriptionText"></div>
+  </div>
+  <!-- Nhà phát triển -->
+  <div class="developer-section" id="developerSection" style="display: none;">
+    <a class="developer-link" id="developerLink">
+      <span>
+        <div id="developerName">Gọi Rồng VIP</div>
+      </span>
+      <span>›</span>
+    </a>
+    <div class="developer-label">Nhà Phát Triển</div>
+  </div>
   <footer>
-    <p>&copy; 2025 Gọi Rồng Online. Bản IPA sideload không chính thức.</p>
+    <p>&copy; 2025 <b><a href="/">IPA Signer</a></b>. Bảo lưu mọi quyền.</p>
   </footer>
 </div>
-
 <script>
 function shareApp() {
   if (navigator.share) {
     navigator.share({
-      title: 'Gọi Rồng Online',
-      text: 'Tải game Gọi Rồng Online siêu hay!',
+      title: document.getElementById('appName').textContent,
+      text: 'Cài đặt ứng dụng này',
       url: window.location.href
     });
   } else {
@@ -147,6 +160,6 @@ function shareApp() {
     });
   }
 }
-</script>
+    </script>
 </body>
 </html>
