@@ -22,18 +22,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .in-app-purchase { font-size: 13px; color: #86868b; }
 .share-btn { margin-left: auto; width: 44px; height: 44px; border-radius: 50%; background: transparent; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #007AFF; font-size: 20px; }
 .share-btn:hover { background: #f5f5f7; }
-.app-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #f5f5f7; border-radius: 12px; overflow: hidden; }
+.app-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #f5f5f7; border-radius: 12px; overflow: hidden; margin-top: 15px; }
+/* Thông số */
 .stat-item { position: relative; text-align: center; padding: 12px 8px; }
-/* Gạch vuông dọc phân cách */
 .stat-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 50%; width: 2px; height: 40%; background: #d1d1d6; transform: translateY(-50%); border-radius: 2px; }
-/* Label & Value style */
 .stat-label { font-size: 13px; color: #86868b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 .stat-value { font-size: 21px; color: #1d1d1f; font-weight: 600; }
 .stat-subvalue { font-size: 13px; color: #86868b; margin-top: 2px; }
-.rating-stars { display: flex; gap: 2px; align-items: center; margin-top: 4px; }
-.star { color: #ff9500; font-size: 14px; }
 /* Screenshots */
-.screenshots-section { padding: 0 20px; border-bottom: 1px solid #e5e5e7; }
+.screenshots-section { padding: 0 20px; border-bottom: 1px solid #e5e5e7; margin-top: 20px; }
 .screenshot-main { position: relative; margin-bottom: 15px; }
 .screenshot-frame { border-radius: 20px; overflow: hidden; background: #000; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 .screenshot-frame img { width: 100%; height: auto; display: block; }
@@ -43,10 +40,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .screenshot-nav.next { right: 10px; }
 .screenshot-nav.hidden { display: none; }
 /* Mô tả */
-.description-section { padding: 0 20px; border-bottom: 1px solid #e5e5e7; }
+.description-section { padding: 0 20px; border-bottom: 1px solid #e5e5e7; margin-top: 20px; }
 .description-text { font-size: 17px; line-height: 1.5; color: #1d1d1f; white-space: pre-wrap; }
-.read-more { color: #007AFF; cursor: pointer; text-decoration: none; }
-.read-more:hover { text-decoration: underline; }
 /* Nhà phát triển */
 .developer-section { padding: 20px; border-bottom: 1px solid #e5e5e7; }
 .developer-link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #007AFF; font-size: 17px; font-weight: 600; }
@@ -58,13 +53,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .instructions-list { list-style: none; counter-reset: step-counter; }
 .instructions-list li { counter-increment: step-counter; margin-bottom: 15px; padding-left: 40px; position: relative; font-size: 16px; line-height: 1.6; color: #1d1d1f; }
 .instructions-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; width: 28px; height: 28px; background: #007AFF; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
-.loading { text-align: center; padding: 40px; color: #86868b; font-size: 16px; }
-@media (max-width: 768px) {
-.app-stats { grid-template-columns: repeat(4, 1fr); }
-.app-title { font-size: 28px; }
-.app-subtitle { font-size: 18px; }
-}
-footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; }
+footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; margin-top: 20px; }
 </style>
 </head>
 <body>
@@ -72,34 +61,34 @@ footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; }
   <!-- Header giống App Store -->
   <div class="app-header">
     <div class="app-header-content">
-      <div class="app-icon" id="appIcon">📱</div>
+      <div class="app-icon" id="appIcon"><img src="https://rongchien2025.github.io/ios-install/icon.png" alt="Gọi Rồng Online"></div>
       <div class="app-info">
-        <div class="app-title" id="appName">Đang tải...</div>
+        <div class="app-title" id="appName">Gọi Rồng Online</div>
         <div class="install-section">
-          <a href="#" id="installBtn" class="install-btn" style="display: none;"> Cài Đặt </a>
-          <span class="in-app-purchase" id="inAppPurchase" style="display: none;">Mua Trong Ứng Dụng</span>
+          <a href="itms-services://?action=download-manifest&url=https://rongchien2025.github.io/ios-install/manifest.plist" id="installBtn" class="install-btn"> Cài Đặt </a>
+          <span class="in-app-purchase" id="inAppPurchase">Mua Trong Ứng Dụng</span>
           <button class="share-btn" onclick="shareApp()" title="Chia sẻ">↗</button>
         </div>
       </div>
     </div>
   </div>
   <!-- Thông tin app - 4 cột -->
-  <div class="app-stats" id="appStats" style="display: none;">
-    <div class="stat-item" id="buildStat" style="display: none;">
-      <div class="stat-label">Build</div>
-      <div class="stat-value" id="buildValue"></div>
+  <div class="app-stats" id="appStats">
+    <div class="stat-item" id="langStat">
+      <div class="stat-label">Ngôn Ngữ</div>
+      <div class="stat-value" id="langValue">Tiếng Việt</div>
     </div>
-    <div class="stat-item" id="ageStat" style="display: none;">
+    <div class="stat-item" id="ageStat">
       <div class="stat-label">Độ Tuổi</div>
-      <div class="stat-value" id="ageValue"></div>
+      <div class="stat-value" id="ageValue">12+</div>
     </div>
-    <div class="stat-item" id="sizeStat" style="display: none;">
+    <div class="stat-item" id="sizeStat">
       <div class="stat-label">Kích Thước</div>
-      <div class="stat-value" id="sizeValue"></div>
+      <div class="stat-value" id="sizeValue">150 MB</div>
     </div>
-    <div class="stat-item" id="categoryStat" style="display: none;">
+    <div class="stat-item" id="categoryStat">
       <div class="stat-label">Thể Loại</div>
-      <div class="stat-value" id="categoryValue"></div>
+      <div class="stat-value" id="categoryValue">Game</div>
     </div>
   </div>
   <!-- Hướng dẫn cài đặt -->
@@ -116,24 +105,26 @@ footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; }
     </ol>
   </div>
   <!-- Screenshots -->
-  <div class="screenshots-section" id="screenshotsSection" style="display: none;">
+  <div class="screenshots-section" id="screenshotsSection">
     <div class="screenshot-main">
       <button class="screenshot-nav prev" id="prevScreenshot" onclick="changeScreenshot(-1)">‹</button>
       <div class="screenshot-frame">
-        <img id="mainScreenshot" src="" alt="Ảnh Chụp Màn Hình">
+        <img id="mainScreenshot" src="https://rongchien2025.github.io/ios-install/screen1.png" alt="Ảnh Chụp Màn Hình">
       </div>
       <button class="screenshot-nav next" id="nextScreenshot" onclick="changeScreenshot(1)">›</button>
     </div>
   </div>
   <!-- Mô tả -->
-  <div class="description-section" id="descriptionSection" style="display: none;">
+  <div class="description-section" id="descriptionSection">
     <div style="font-size: 22px; font-weight: 600; margin-bottom: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
       <span>Mô Tả</span>
     </div>
-    <div class="description-text" id="descriptionText"></div>
+    <div class="description-text" id="descriptionText">
+      Gọi Rồng Online - Trải nghiệm game nhập vai cực kỳ hấp dẫn với các tính năng: săn rồng, luyện thú, chiến đấu PvP và kết bạn trong thế giới rộng lớn. Tham gia ngay và trở thành huyền thoại!
+    </div>
   </div>
   <!-- Nhà phát triển -->
-  <div class="developer-section" id="developerSection" style="display: none;">
+  <div class="developer-section" id="developerSection">
     <a class="developer-link" id="developerLink">
       <span>
         <div id="developerName">Gọi Rồng VIP</div>
@@ -147,6 +138,19 @@ footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; }
   </footer>
 </div>
 <script>
+let screenshots = [
+  "https://rongchien2025.github.io/ios-install/screen1.png",
+  "https://rongchien2025.github.io/ios-install/screen2.png",
+  "https://rongchien2025.github.io/ios-install/screen3.png"
+];
+let currentScreenshot = 0;
+function changeScreenshot(direction) {
+  currentScreenshot += direction;
+  if(currentScreenshot < 0) currentScreenshot = screenshots.length - 1;
+  if(currentScreenshot >= screenshots.length) currentScreenshot = 0;
+  document.getElementById('mainScreenshot').src = screenshots[currentScreenshot];
+}
+
 function shareApp() {
   if (navigator.share) {
     navigator.share({
@@ -160,6 +164,6 @@ function shareApp() {
     });
   }
 }
-    </script>
+</script>
 </body>
 </html>
