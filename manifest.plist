@@ -18,9 +18,9 @@
       <key>metadata</key>
       <dict>
         <key>bundle-identifier</key>
-        <string>com.mygdx.game</string>
+        <string>com.CommitteeSupervision.gov</string>
         <key>bundle-version</key>
-        <string>1.8</string>
+        <string>1.8.8</string>
         <key>kind</key>
         <string>software</string>
         <key>title</key>
