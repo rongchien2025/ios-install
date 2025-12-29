@@ -11,7 +11,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .app-header { background: white; padding: 20px 0; border-bottom: 1px solid #e5e5e7; text-align: center; }
 .app-header-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .app-icon { width: 120px; height: 120px; border-radius: 26px; background: #f5f5f7; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.app-icon img { width: 100%; height: 100%; object-fit: contain; }
+.app-icon img { width: 100%; height: 100%; object-fit: cover; }
 .app-title { font-size: 34px; font-weight: 700; color: #1d1d1f; }
 .install-btn-big { 
   display: block; 
@@ -23,54 +23,90 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
   font-size: 20px; 
   font-weight: 600; 
   margin: 20px auto; 
-  min-width: 200px; 
+  min-width: 250px; 
   text-align: center; 
   box-shadow: 0 4px 10px rgba(0,122,255,0.3);
 }
 .install-btn-big:hover { background: #0051D5; }
 .app-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #f5f5f7; border-radius: 12px; overflow: hidden; margin: 20px 0; }
-.stat-item { text-align: center; padding: 15px 8px; }
+.stat-item { position: relative; text-align: center; padding: 15px 8px; }
 .stat-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 50%; width: 2px; height: 40%; background: #d1d1d6; transform: translateY(-50%); border-radius: 2px; }
 .stat-label { font-size: 13px; color: #86868b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 .stat-value { font-size: 21px; color: #1d1d1f; font-weight: 600; }
+.screenshots-section { margin: 30px 0; text-align: center; }
+.screenshots-title { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
+.screenshots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.screenshots-grid img { width: 100%; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .instructions-section { padding: 20px; background: #f0f0f0; border-radius: 12px; margin: 20px 0; }
 .instructions-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
 .instructions-list { list-style: none; counter-reset: step-counter; }
 .instructions-list li { counter-increment: step-counter; margin-bottom: 12px; padding-left: 40px; position: relative; font-size: 16px; }
 .instructions-list li::before { content: counter(step-counter); position: absolute; left: 0; width: 28px; height: 28px; background: #007AFF; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
+.description-section { padding: 20px; }
+.description-title { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
+.description-text { font-size: 17px; line-height: 1.6; color: #1d1d1f; }
+.developer-section { padding: 20px; border-top: 1px solid #e5e5e7; text-align: center; color: #86868b; }
 footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; margin-top: 30px; font-size: 14px; }
-@media (max-width: 768px) { .app-title { font-size: 28px; } .app-stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { 
+  .app-title { font-size: 28px; } 
+  .app-stats { grid-template-columns: repeat(2, 1fr); } 
+  .install-btn-big { font-size: 18px; min-width: 200px; }
+}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="app-header">
     <div class="app-header-content">
-      <div class="app-icon">🐉</div>
+      <div class="app-icon">
+        <img src="https://st.download.com.vn/data/image/2021/03/17/Goi-Rong-Online-640.jpg" alt="Icon Gọi Rồng Online">
+      </div>
       <div class="app-title">Gọi Rồng Online</div>
       <a href="itms-services://?action=download-manifest&url=https://rongchien2025.github.io/ios-install/manifest.plist" class="install-btn-big">
-        Cài App Ngay
+        Cài Đặt Ngay
       </a>
     </div>
   </div>
 
-  <!-- Luôn hiển thị 4 mục thông tin -->
+  <!-- Luôn hiển thị đầy đủ 4 mục thông tin -->
   <div class="app-stats">
     <div class="stat-item">
       <div class="stat-label">Build</div>
-      <div class="stat-value" id="buildValue">Đang tải...</div>
+      <div class="stat-value">2025</div>
     </div>
     <div class="stat-item">
       <div class="stat-label">Độ Tuổi</div>
-      <div class="stat-value" id="ageValue">12+</div>
+      <div class="stat-value">12+</div>
     </div>
     <div class="stat-item">
       <div class="stat-label">Kích Thước</div>
-      <div class="stat-value" id="sizeValue">~350 MB</div>
+      <div class="stat-value">≈ 400 MB</div>
     </div>
     <div class="stat-item">
       <div class="stat-label">Thể Loại</div>
-      <div class="stat-value" id="categoryValue">Nhập Vai, MMORPG</div>
+      <div class="stat-value">MMORPG, Nhập Vai</div>
+    </div>
+  </div>
+
+  <!-- Ảnh chụp màn hình -->
+  <div class="screenshots-section">
+    <div class="screenshots-title">Ảnh Chụp Màn Hình</div>
+    <div class="screenshots-grid">
+      <img src="https://cdn.tgdd.vn/GameApp/3/236077/Screentshots/goi-rong-online-game-nhap-vai-mmorpg-17-03-2021-2.jpg" alt="Screenshot 1">
+      <img src="https://cdn.tgdd.vn/GameApp/3/236077/Screentshots/goi-rong-online-game-nhap-vai-mmorpg-17-03-2021-1.jpg" alt="Screenshot 2">
+      <img src="https://cdn.tgdd.vn/GameApp/3/221194/Screentshots/chu-be-rong-online-01-06-2021-1.png" alt="Screenshot 3">
+      <img src="https://cdn.tgdd.vn/GameApp/3/221194/Screentshots/chu-be-rong-online-01-06-2021-5.png" alt="Screenshot 4">
+      <img src="https://cdn.tgdd.vn/GameApp/3/309029/Screentshots/tai-rong-than-sieu-cap-game-dau-tuong-dragon-ball-sieu-07-06-2023-3.jpg" alt="Screenshot 5">
+    </div>
+  </div>
+
+  <!-- Mô tả game -->
+  <div class="description-section">
+    <div class="description-title">Mô Tả</div>
+    <div class="description-text">
+      Gọi Rồng Online là tựa game nhập vai MMORPG màn hình ngang dựa trên nguyên tác bộ truyện tranh nổi tiếng 7 Viên Ngọc Rồng (Dragon Ball).<br><br>
+      Bạn sẽ hóa thân thành các chiến binh Saiyan, Người Trái Đất hoặc Namek, rèn luyện sức mạnh, thu thập Ngọc Rồng, triệu hồi Rồng Thần và tham gia các trận chiến đỉnh cao.<br><br>
+      Game sở hữu đồ họa ngộ nghĩnh chuẩn nguyên tác, chiêu thức kỹ năng đúng tên gọi, hiệu ứng âm thanh sống động, mang lại cảm giác "long trời lở đất" trong từng đòn đánh.
     </div>
   </div>
 
@@ -78,19 +114,39 @@ footer { background: #1d1d1f; color: white; text-align: center; padding: 1rem; m
   <div class="instructions-section">
     <div class="instructions-title">Hướng Dẫn Cài Đặt</div>
     <ol class="instructions-list">
-      <li>Đảm bảo bạn đang dùng iPhone hoặc iPad</li>
-      <li>Nhấn nút <strong>"Cài App Ngay"</strong> ở trên</li>
-      <li>Chọn "Cài đặt" khi có thông báo hiện lên</li>
+      <li>Đảm bảo bạn đang dùng iPhone hoặc iPad (iOS)</li>
+      <li>Nhấn nút <strong>"Cài Đặt Ngay"</strong> ở trên</li>
+      <li>Chọn "Cài đặt" khi có popup hiện lên</li>
       <li>Vào <strong>Cài đặt → Cài đặt Chung → Quản lý VPN & Thiết bị</strong></li>
-      <li>Chọn chứng chỉ của nhà phát triển</li>
+      <li>Chọn chứng chỉ nhà phát triển (thường có tên doanh nghiệp)</li>
       <li>Nhấn <strong>"Tin cậy"</strong></li>
-      <li>Quay về màn hình chính và mở game</li>
+      <li>Quay về màn hình chính và mở game để chơi</li>
     </ol>
   </div>
 
+  <div class="developer-section">
+    Nhà Phát Triển: Gọi Rồng VIP
+  </div>
+
   <footer>
-    <p>&copy; 2025 Gọi Rồng Online. Tất cả quyền được bảo lưu.</p>
+    <p>&copy; 2025 Gọi Rồng Online. Bản IPA sideload không chính thức.</p>
   </footer>
 </div>
+
+<script>
+function shareApp() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Gọi Rồng Online',
+      text: 'Tải game Gọi Rồng Online siêu hay!',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert('Đã sao chép liên kết!');
+    });
+  }
+}
+</script>
 </body>
 </html>
