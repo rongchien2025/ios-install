@@ -20,7 +20,7 @@
         <key>bundle-identifier</key>
         <string>com.CommitteeSupervision.gov</string>
         <key>bundle-version</key>
-        <string>2.0</string>
+        <string>1.8</string>
         <key>kind</key>
         <string>software</string>
         <key>title</key>
